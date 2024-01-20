@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit-Top : N-Body OS Visualizer</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #050505;
+            color: #fff;
+            font-family: 'Consolas', 'Courier New', monospace;
+        }
+        canvas {
+            display: block;
+        }
+        #hud {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            pointer-events: none;
+        }
+        .metric {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            backdrop-filter: blur(5px);
+        }
+        .metric h3 {
+            margin: 0 0 5px 0;
+            font-size: 14px;
+            color: #00f3ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .metric p {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ff0055;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .warning {
+            color: #ff0055;
+            animation: pulse 1s infinite alternate;
+        }
+        @keyframes pulse {
+            from { opacity: 0.6; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div id="hud">
+        <div class="metric">
+            <h3>CPU Load</h3>
+            <p id="cpu-total">0%</p>
+        </div>
+        <div class="metric">
+            <h3>RAM Usage</h3>
+            <p id="ram-total">0 GB</p>
+        </div>
+        <div class="metric" style="border-color: #ff0055;">
+            <h3>Click a Planet</h3>
+            <p style="font-size:12px; color: #ff0055;">(Simulate SIGKILL Laser)</p>
+        </div>
+    </div>
+    
+    <div id="tooltip">
+        <strong id="tt-name" style="color: #00f3ff; font-size: 16px;">ProcessName</strong><br>
+        PID: <span id="tt-pid"></span><br>
+        CPU: <span id="tt-cpu"></span>%<br>
+        RAM: <span id="tt-ram"></span> MB<br>
+        Threads: <span id="tt-threads"></span>
+    </div>
+
+    <canvas id="universe"></canvas>
+
+    <script src="visualizer.js"></script>
+</body>
+</html>
