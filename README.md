@@ -1,3 +1,5 @@
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+
 # Copy and Upgrade 🚀
 
 Welcome to the **Copy and Upgrade** repository!
